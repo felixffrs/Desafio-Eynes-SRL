@@ -8,7 +8,7 @@ import random
 
 def create_matriz(rows, columns):
 
-    matriz = [[random.randint(1, 4) for r in range(rows)] for c in range(columns)]
+    matriz = [[random.randint(1, 100) for r in range(rows)] for c in range(columns)]
     return matriz
 
 def print_matriz(matriz):
