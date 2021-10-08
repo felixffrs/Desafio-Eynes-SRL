@@ -13,29 +13,84 @@ import math
 
 class Circulo():
     def __init__(self, radio):
+        """
+        Test constructor circulo
+        >>> circle = Circulo(0)
+        Traceback (most recent call last):
+        ...
+        ValueError: Por favor ingrese un radio superior a 0
+        >>> circle = Circulo(-1)
+        Traceback (most recent call last):
+        ...
+        ValueError: Por favor ingrese un radio superior a 0
+        """
         if radio > 0:
             self.radio = radio
         else:
-            print("Por favor ingrese un radio superior a 0")
+            raise ValueError("Por favor ingrese un radio superior a 0")
 
     def set_radio(self, radio):
+        """
+        Test constructor circulo
+        >>> circle = Circulo(5)
+        >>> circle.set_radio(0)
+        Traceback (most recent call last):
+        ...
+        ValueError: No esta setear un radio con un valor inferior a 1
+        >>> circle = Circulo(6)
+        >>> circle.set_radio(-1)
+        Traceback (most recent call last):
+        ...
+        ValueError: No esta setear un radio con un valor inferior a 1
+        """
         if radio > 0:
             self.radio = radio
         else:
-            print("No esta permitido ingresar un radio inferior a 1")
+            raise ValueError("No esta setear un radio con un valor inferior a 1")
 
     def area(self):
+        """
+        Test area circulo
+        >>> circle = Circulo(1) 
+        >>> circle.area()
+        3.141592653589793
+        >>> circle = Circulo(3)
+        >>> circle.area()
+        28.274333882308138
+        """
         return math.pi * self.radio**2
     
     def perimetro(self):
+        """
+        Test perimetro circulo
+        >>> circle = Circulo(1) 
+        >>> circle.perimetro()
+        6.283185307179586
+        >>> circle = Circulo(3)
+        >>> circle.perimetro()
+        18.84955592153876
+        """
         return 2 * math.pi * self.radio
 
     def __str__(self):
         return f"Radio del circulo: {self.radio}, Area: {self.area()} y el Perimetro: {self.perimetro()}"
     
     def __mul__(self, n):
+        """
+        Test multiplicacion
+        >>> circle = Circulo(1)
+        >>> circle.area()
+        3.141592653589793
+        >>> new_circle = circle * 3
+        >>> new_circle.area()
+        28.274333882308138
+        """
         if n > 0: 
             new_circle = Circulo(self.radio * n)
             return new_circle
         else:
             print("No esta permitida la multiplicacion con numeros inferiores a 1")
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
